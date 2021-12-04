@@ -1,18 +1,10 @@
-import { readFileSync } from "fs";
 import { drop, zip, flatten, sum } from "ramda";
+import { parseFile } from "../utils";
 
 type DepthAnalysis = {
   numIncrease: number;
   numDecrease: number;
 };
-
-export function getData(): number[] {
-  const data = readFileSync("./Day_1/data.txt", "utf-8");
-  return data
-    .split("\n")
-    .filter((d) => d !== "")
-    .map((d) => +d);
-}
 
 export function didDepthIncrease(depths: {
   previous: number;
@@ -40,7 +32,7 @@ export function analyzeDepths(data: boolean[]): DepthAnalysis {
   };
 }
 
-const numbers = getData();
+const numbers = parseFile("./Day_1/data.txt").map((d) => +d);
 
 const processed1 = processDepthDataP1(numbers);
 const analysis1 = analyzeDepths(processed1);

@@ -1,16 +1,5 @@
-import { readFileSync } from "fs";
-import { countBy, max } from "ramda";
-
-function getData(): number[][] {
-  const data = readFileSync("./Day_3/data.txt", "utf-8");
-  return data
-    .split("\n")
-    .filter((d) => d !== "")
-    .map((bin) => {
-      const bits = bin.split("");
-      return bits.map((b) => +b);
-    });
-}
+import { countBy } from "ramda";
+import { parseFile } from "../utils";
 
 function buildColumns(report: number[][]): number[][] {
   let dataByColumn: number[][] = [];
@@ -95,7 +84,11 @@ export function calcP2Rates(report: number[][]): {
   };
 }
 
-const data = getData();
+const data: number[][] = parseFile("./Day_3/data.txt").map((bin) => {
+  const bits = bin.split("");
+  return bits.map((b) => +b);
+});
+
 const ratesP1 = calcP1Rates(data);
 console.log("answer to part 1:", ratesP1.gamma * ratesP1.epsilon);
 const ratesP2 = calcP2Rates(data);

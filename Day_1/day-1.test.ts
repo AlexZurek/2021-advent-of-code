@@ -1,24 +1,11 @@
 import {
   analyzeDepths,
   didDepthIncrease,
-  getData,
   processDepthDataP1,
   processDepthDataP2,
 } from "./day-1";
 
 describe("Day 1", () => {
-  describe("getData", () => {
-    it("should return a list of 2000 records", async () => {
-      const fileData = getData();
-      expect(fileData.length).toEqual(2000);
-    });
-
-    it("should convert data to numbers", async () => {
-      const fileData = getData();
-      expect(typeof fileData[0]).toEqual("number");
-    });
-  });
-
   describe("compareDepths", () => {
     it("should return false when depth decreases", () => {
       const result = didDepthIncrease({ current: 190, previous: 200 });

@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { parseFile } from "../utils";
 
 export class SubmarineP1 {
   horizontal_pos: number;
@@ -61,17 +61,6 @@ type DirectionChange = {
   amount: number;
 };
 
-function getData(): DirectionChange[] {
-  const data = readFileSync("./Day_2/data.txt", "utf-8");
-  return data
-    .split("\n")
-    .filter((d) => d !== "")
-    .map((d) => {
-      const parts = d.split(" ");
-      return { direction: parts[0] as Direction, amount: +parts[1] };
-    });
-}
-
 function processDataP1(changes: DirectionChange[]): number {
   const sub = new SubmarineP1();
   changes.forEach((change) => {
@@ -110,7 +99,10 @@ function processDataP2(changes: DirectionChange[]): number {
   return sub.getLocation();
 }
 
-const data = getData();
+const data: DirectionChange[] = parseFile("./Day_2/data.txt").map((d) => {
+  const parts = d.split(" ");
+  return { direction: parts[0] as Direction, amount: +parts[1] };
+});
 
 console.log("Answer to Part 1:", processDataP1(data));
 console.log("Answer to Part 2:", processDataP2(data));
