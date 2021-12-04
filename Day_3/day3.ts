@@ -84,7 +84,7 @@ export function calcP2Rates(report: number[][]): {
   };
 }
 
-const data: number[][] = parseFile("./Day_3/data.txt").map((bin) => {
+const data: number[][] = parseFile(3).map((bin) => {
   const bits = bin.split("");
   return bits.map((b) => +b);
 });

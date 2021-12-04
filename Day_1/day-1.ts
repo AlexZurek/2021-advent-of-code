@@ -32,7 +32,7 @@ export function analyzeDepths(data: boolean[]): DepthAnalysis {
   };
 }
 
-const numbers = parseFile("./Day_1/data.txt").map((d) => +d);
+const numbers = parseFile(1).map((d) => +d);
 
 const processed1 = processDepthDataP1(numbers);
 const analysis1 = analyzeDepths(processed1);

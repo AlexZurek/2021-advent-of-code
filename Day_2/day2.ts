@@ -99,7 +99,7 @@ function processDataP2(changes: DirectionChange[]): number {
   return sub.getLocation();
 }
 
-const data: DirectionChange[] = parseFile("./Day_2/data.txt").map((d) => {
+const data: DirectionChange[] = parseFile(2).map((d) => {
   const parts = d.split(" ");
   return { direction: parts[0] as Direction, amount: +parts[1] };
 });
